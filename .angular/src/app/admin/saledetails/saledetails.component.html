@@ -1,0 +1,106 @@
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Sale</h1>
+  </div><br>
+  <!-- End Page Title -->
+
+  <div class="card" *ngIf="editSales">
+    <div class="card-body">
+
+      <div class="col-md-12 row">
+        <div class="mb-3 mt-1 col-md-4">
+          <label class="form-label"><b>Customer Name : </b></label>
+          <input type="text" class="form-control" id="fname" placeholder="Enter First Name"
+            [(ngModel)]="editSales.customerName">
+        </div>
+
+        <div class="mb-3 mt-1 col-md-4">
+          <label class="form-label"><b>Mobile No : </b></label>
+          <input type="tel" class="form-control" id="mobileno" placeholder="Enter Mobile No"
+            [(ngModel)]="editSales.mobileNo">
+        </div>
+
+        <div class="mb-3 mt-1 col-md-4">
+          <label class="form-label"><b>Sale Date : </b></label>
+          <input type="date" class="form-control" id="date" placeholder="Please Select Date"
+            [(ngModel)]="editSales.saleDate">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="table table-responsive">
+        <table class="table table-striped">
+
+          <thead>
+            <tr>
+              <th style="width: 3%;">No</th>
+              <th style="width: 20%;">Product</th>
+              <th style="width: 10%;">Quantity</th>
+              <th style="width: 10%;">Price</th>
+              <th style="width: 15%;">SubTotal</th>
+              <th style="width: 10%;">GST %</th>
+              <th style="width: 15%;">GST Amount</th>
+              <th style="width: 17%;">Bill Amount</th>
+              <th style="width: 5%;"></th>
+            </tr>
+          </thead>
+
+
+          <tbody>
+            <tr *ngFor="let detail of salesDetails; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>
+                <select name="productid" class="form-control" [(ngModel)]="detail.productid"
+                  (change)="productChanged(i)">
+                  <option value="0">Select Product</option>
+                  <option *ngFor="let product of productList" [ngValue]="product.id">{{ product.name }}</option>
+                </select>
+              </td>
+              <td>
+                <input type="number" min="0" class="form-control" style="width: auto;" [(ngModel)]="detail.quantity"
+                  (input)="updateSubtotal(i)" />
+              </td>
+              <td>{{ detail.price || 0 | currency:"INR" }}</td>
+              <td>{{ detail.subtotal || 0 | currency:"INR" }}</td>
+              <td>{{ detail.gstPercentage || 0 }}</td>
+              <td>{{ detail.gstAmount || 0 | currency:"INR" }}</td>
+              <td>{{ detail.billAmount || 0 | currency:"INR" }}</td>
+              <td>
+                <button class="btn btn-outline-danger btn-sm" (click)="removeSalesDetailRow(i)">Remove</button>
+              </td>
+            </tr>
+          </tbody><br>
+
+          <tfoot class="table-success">
+            <tr>
+              <th>
+                <h5><b>Total</b></h5>
+              </th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th>{{ editSales.subTotal | currency:"INR" }}</th>
+              <th></th>
+              <th>{{ editSales.gstTotal | currency:"INR" }}</th>
+              <th>{{ editSales.billTotal | currency:"INR" }}</th>
+              <th></th>
+            </tr>
+          </tfoot>
+
+        </table>
+      </div>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-outline-primary" (click)="addSalesDetailRow()">Add</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="justify-content: center; text-align: center ; margin-top: 10px;">
+    <button type="button" class="btn btn-outline-success btn-xl" (click)="save()">Save</button>
+  </div>
+
+</main><br><br>

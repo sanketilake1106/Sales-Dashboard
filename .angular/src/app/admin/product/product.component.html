@@ -1,0 +1,39 @@
+<main id="main" class="main">
+
+    <!-- <div class="pagetitle">
+        <h1>Add Product</h1>
+    </div> -->
+    <br><br>
+
+    <div class="card">
+        <div class="card-header">
+            <h3><b>Product</b></h3>
+        </div><br>
+
+        <div class="card-body">
+            <div class="row g-3">
+                <form [formGroup]="editProuct" (ngSubmit)="save(editProuct.value)">
+                    <div class="col-12">
+                        <label for="" class="form-label"><b>Name :</b></label>
+                        <input type="text" class="form-control" id="name" value="" placeholder="Enter Product Name" formControlName="name">
+                    </div>
+                    <div class="col-12">
+                        <label for="" class="form-label"><b>Price :</b></label>
+                        <input type="number" class="form-control" id="price" value="" placeholder="Price" formControlName="price">
+                    </div>
+                    <div class="col-12">
+                        <label for="" class="form-label"><b>GST % :</b></label>
+                        <input type="number" class="form-control" id="gstpercent" value="" placeholder="GST Percent" formControlName="gstpercentage">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="text-center center">
+                <button type="button" class="btn btn-outline-primary" (click)="save(editProuct.value)">Save</button>
+            </div>
+        </div>
+    </div>
+
+
+</main>

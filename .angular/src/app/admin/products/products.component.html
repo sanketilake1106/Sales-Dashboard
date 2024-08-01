@@ -1,0 +1,44 @@
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Products</h1>
+  </div>
+  <!-- End Page Title -->
+  <div style="text-align: end;">
+    <button type="button" class="btn btn-primary" routerLink="/admin/product">Add</button>
+  </div>
+  <hr>
+
+
+  <div class="card">
+    <div class="card-body">
+      <div class="table table-responsive">
+        <table class="table table-striped">
+
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>No</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>GST %</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of products; let i = index;">
+              <td>
+                <button type="button" class="btn btn-outline-primary btn-sm" (click)="editProduct(p.id)">Edit</button>&nbsp;
+                <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteProduct(p.id)">Delete</button>
+              </td>
+              <td>{{i + 1}}</td>
+              <td>{{p.name}}</td>
+              <td>{{p.price | currency:"INR"}}</td>
+              <td>{{p.gstpercentage}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>  
+    </div>
+  </div>
+
+</main>

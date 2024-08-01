@@ -1,0 +1,45 @@
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Admins</h1>
+  </div>
+
+  <div style="text-align: end;">
+    <button type="button" class="btn btn-primary" routerLink="/admin/admin">Add</button>
+  </div>
+  <hr>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="table table-responsive">
+        <table class="table table-striped">
+
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>No</th>
+              <th>Name</th>
+              <th>Username</th>
+              <th>Password</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let a of admins; let i = index;">
+              <td>
+                <button type="button" class="btn btn-outline-primary btn-sm"
+                (click)="editAdmin(a.id)">Edit</button>&nbsp;       
+                <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteAdmin(a.id)">Delete</button>
+              </td>
+              <td>{{i + 1}}</td>
+              <td>{{a.name}}</td>
+              <td>{{a.username}}</td>
+              <td>{{a.password}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</main>
+

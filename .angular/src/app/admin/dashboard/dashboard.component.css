@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+
+* {
+  transition: all 0.3s ease-out;
+}
+
+.card {
+  top: 0px;
+  background-color: #f2f8f9;
+
+  &:hover {
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+    top: -4px;
+    border: 1px solid #cccccc;
+    background-color: white;
+  }
+}
